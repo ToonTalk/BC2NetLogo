@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="src/uk/ac/ox/it/modelling4all/bc2netlogo/lib/fluent-hc-4.2.3.jar"/>
+	<classpathentry kind="lib" path="src/uk/ac/ox/it/modelling4all/bc2netlogo/lib/httpclient-cache-4.2.3.jar"/>
+	<classpathentry kind="lib" path="src/uk/ac/ox/it/modelling4all/bc2netlogo/lib/json-20090211.jar"/>
+	<classpathentry kind="lib" path="src/uk/ac/ox/it/modelling4all/bc2netlogo/lib/httpclient-4.2.3.jar"/>
+	<classpathentry kind="lib" path="src/uk/ac/ox/it/modelling4all/bc2netlogo/lib/httpcore-4.2.2.jar"/>
+	<classpathentry kind="lib" path="src/uk/ac/ox/it/modelling4all/bc2netlogo/lib/httpmime-4.2.3.jar"/>
+	<classpathentry kind="lib" path="src/uk/ac/ox/it/modelling4all/bc2netlogo/lib/commons-io-2.4.jar"/>
+	<classpathentry kind="lib" path="src/uk/ac/ox/it/modelling4all/bc2netlogo/lib/commons-lang-2.6.jar"/>
+	<classpathentry kind="lib" path="src/uk/ac/ox/it/modelling4all/bc2netlogo/lib/NetLogo.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
