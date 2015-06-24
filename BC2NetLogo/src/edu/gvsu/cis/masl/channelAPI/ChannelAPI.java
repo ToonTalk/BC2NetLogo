@@ -592,6 +592,13 @@ public class ChannelAPI {
                 } else if (ch == ',') {
                     // blank entry
                     entries.add(new TalkMessageEntry(MessageEntryKind.ME_EMPTY, null));
+                } else if (ch == 'n') {
+                    // assume this is null so treat as a blank entry (Ken Kahn added this on 23 June 2015)
+                    // best guess is that Google App Engine changed something today
+                    entries.add(new TalkMessageEntry(MessageEntryKind.ME_EMPTY, null));
+                    ch = skipWhitespace(reader); // u
+                    ch = skipWhitespace(reader); // l
+                    ch = skipWhitespace(reader); // l
                 } else {
                     // we assume it's a number
                     long numValue = parseNumberValue(reader, (char) ch);
