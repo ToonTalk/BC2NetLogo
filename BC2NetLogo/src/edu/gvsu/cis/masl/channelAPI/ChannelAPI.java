@@ -282,7 +282,7 @@ public class ChannelAPI {
 
         HttpEntity entity = null;
         try {
-            entity = new UrlEncodedFormEntity(params);
+            entity = new UrlEncodedFormEntity(params,  "utf-8");
         } catch(UnsupportedEncodingException e) {
 
         }
