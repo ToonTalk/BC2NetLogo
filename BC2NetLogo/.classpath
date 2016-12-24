@@ -1,15 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="src/uk/ac/ox/it/modelling4all/bc2netlogo/lib/fluent-hc-4.2.3.jar"/>
-	<classpathentry kind="lib" path="src/uk/ac/ox/it/modelling4all/bc2netlogo/lib/httpclient-cache-4.2.3.jar"/>
-	<classpathentry kind="lib" path="src/uk/ac/ox/it/modelling4all/bc2netlogo/lib/json-20090211.jar"/>
-	<classpathentry kind="lib" path="src/uk/ac/ox/it/modelling4all/bc2netlogo/lib/httpclient-4.2.3.jar"/>
-	<classpathentry kind="lib" path="src/uk/ac/ox/it/modelling4all/bc2netlogo/lib/httpcore-4.2.2.jar"/>
-	<classpathentry kind="lib" path="src/uk/ac/ox/it/modelling4all/bc2netlogo/lib/httpmime-4.2.3.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="src/uk/ac/ox/it/modelling4all/bc2netlogo/lib/commons-codec-1.6.jar"/>
 	<classpathentry kind="lib" path="src/uk/ac/ox/it/modelling4all/bc2netlogo/lib/commons-io-2.4.jar"/>
 	<classpathentry kind="lib" path="src/uk/ac/ox/it/modelling4all/bc2netlogo/lib/commons-lang-2.6.jar"/>
-	<classpathentry kind="lib" path="src/uk/ac/ox/it/modelling4all/bc2netlogo/lib/NetLogo.jar"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="src/uk/ac/ox/it/modelling4all/bc2netlogo/lib/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="src/uk/ac/ox/it/modelling4all/bc2netlogo/lib/fluent-hc-4.2.3.jar"/>
+	<classpathentry kind="lib" path="src/uk/ac/ox/it/modelling4all/bc2netlogo/lib/gluegen-rt-2.3.2.jar"/>
+	<classpathentry kind="lib" path="src/uk/ac/ox/it/modelling4all/bc2netlogo/lib/httpclient-4.2.jar"/>
+	<classpathentry kind="lib" path="src/uk/ac/ox/it/modelling4all/bc2netlogo/lib/httpclient-cache-4.2.3.jar"/>
+	<classpathentry kind="lib" path="src/uk/ac/ox/it/modelling4all/bc2netlogo/lib/httpcore-4.2.jar"/>
+	<classpathentry kind="lib" path="src/uk/ac/ox/it/modelling4all/bc2netlogo/lib/httpmime-4.2.jar"/>
+	<classpathentry kind="lib" path="src/uk/ac/ox/it/modelling4all/bc2netlogo/lib/jhotdraw-6.0b1.jar"/>
+	<classpathentry kind="lib" path="src/uk/ac/ox/it/modelling4all/bc2netlogo/lib/jogl-2.3.2.jar"/>
+	<classpathentry kind="lib" path="src/uk/ac/ox/it/modelling4all/bc2netlogo/lib/json-simple-1.1.1.jar"/>
+	<classpathentry kind="lib" path="src/uk/ac/ox/it/modelling4all/bc2netlogo/lib/log4j-1.2.16.jar"/>
+	<classpathentry kind="lib" path="src/uk/ac/ox/it/modelling4all/bc2netlogo/lib/objenesis-1.0.jar"/>
+	<classpathentry kind="lib" path="src/uk/ac/ox/it/modelling4all/bc2netlogo/lib/picocontainer-2.13.6.jar"/>
+	<classpathentry kind="lib" path="src/uk/ac/ox/it/modelling4all/bc2netlogo/lib/cglib-nodep-2.1_3.jar"/>
+	<classpathentry kind="lib" path="src/uk/ac/ox/it/modelling4all/bc2netlogo/lib/hamcrest-core-1.1.jar"/>
+	<classpathentry kind="lib" path="src/uk/ac/ox/it/modelling4all/bc2netlogo/lib/hamcrest-library-1.1.jar"/>
+	<classpathentry kind="lib" path="src/uk/ac/ox/it/modelling4all/bc2netlogo/lib/jmf-2.1.1e.jar"/>
+	<classpathentry kind="lib" path="src/uk/ac/ox/it/modelling4all/bc2netlogo/lib/jmock-2.5.1.jar"/>
+	<classpathentry kind="lib" path="src/uk/ac/ox/it/modelling4all/bc2netlogo/lib/jmock-junit4-2.5.1.jar"/>
+	<classpathentry kind="lib" path="src/uk/ac/ox/it/modelling4all/bc2netlogo/lib/jmock-legacy-2.5.1.jar"/>
+	<classpathentry kind="lib" path="src/uk/ac/ox/it/modelling4all/bc2netlogo/lib/quaqua-9.1.jar"/>
+	<classpathentry kind="lib" path="src/uk/ac/ox/it/modelling4all/bc2netlogo/lib/swing-layout-9.1.jar"/>
+	<classpathentry kind="lib" path="src/uk/ac/ox/it/modelling4all/bc2netlogo/lib/test-interface-0.5.jar"/>
+	<classpathentry kind="lib" path="src/uk/ac/ox/it/modelling4all/bc2netlogo/lib/json-20090211.jar"/>
+	<classpathentry kind="lib" path="src/uk/ac/ox/it/modelling4all/bc2netlogo/lib/mrjadapter-1.2.jar"/>
+	<classpathentry kind="lib" path="src/uk/ac/ox/it/modelling4all/bc2netlogo/lib/asm-5.0.3.jar"/>
+	<classpathentry kind="lib" path="src/uk/ac/ox/it/modelling4all/bc2netlogo/lib/asm-all-5.0.4.jar"/>
+	<classpathentry kind="lib" path="src/uk/ac/ox/it/modelling4all/bc2netlogo/lib/asm-analysis-5.0.3.jar"/>
+	<classpathentry kind="lib" path="src/uk/ac/ox/it/modelling4all/bc2netlogo/lib/asm-tree-5.0.3.jar"/>
+	<classpathentry kind="lib" path="src/uk/ac/ox/it/modelling4all/bc2netlogo/lib/asm-util-5.0.3.jar"/>
+	<classpathentry kind="lib" path="src/uk/ac/ox/it/modelling4all/bc2netlogo/lib/macro-compat_2.12-1.1.1.jar"/>
+	<classpathentry kind="lib" path="src/uk/ac/ox/it/modelling4all/bc2netlogo/lib/netlogo-6.0.0.jar"/>
+	<classpathentry kind="lib" path="src/uk/ac/ox/it/modelling4all/bc2netlogo/lib/parboiled_2.12-2.1.3.jar"/>
+	<classpathentry kind="lib" path="src/uk/ac/ox/it/modelling4all/bc2netlogo/lib/parboiled-core-1.1.7.jar"/>
+	<classpathentry kind="lib" path="src/uk/ac/ox/it/modelling4all/bc2netlogo/lib/parboiled-java-1.1.7.jar"/>
+	<classpathentry kind="lib" path="src/uk/ac/ox/it/modelling4all/bc2netlogo/lib/pegdown-1.6.0.jar"/>
+	<classpathentry kind="lib" path="src/uk/ac/ox/it/modelling4all/bc2netlogo/lib/rsyntaxtextarea-2.6.0.jar"/>
+	<classpathentry kind="lib" path="src/uk/ac/ox/it/modelling4all/bc2netlogo/lib/scala-library-2.12.0.jar"/>
+	<classpathentry kind="lib" path="src/uk/ac/ox/it/modelling4all/bc2netlogo/lib/scala-library-2.12.1.jar"/>
+	<classpathentry kind="lib" path="src/uk/ac/ox/it/modelling4all/bc2netlogo/lib/scala-parser-combinators_2.12-1.0.4.jar"/>
+	<classpathentry kind="lib" path="src/uk/ac/ox/it/modelling4all/bc2netlogo/lib/shapeless_2.12-2.3.2.jar"/>
+	<classpathentry kind="lib" path="src/uk/ac/ox/it/modelling4all/bc2netlogo/lib/jcommon-1.0.16.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -164,7 +164,9 @@ public class BC2NetLogo {
 	    urlForNewURL += "?domain=" + domain + "&cookiesEnabled=1";
 	}
 	translate = Settings.getPreferenceBoolean("translate", false);
+	printUserMessage("about to write preferences");
 	Settings.writePreferences();
+	printUserMessage("about to getConnectionToServer");
 	getConnectionToServer(false);
     }
 
@@ -226,6 +228,7 @@ public class BC2NetLogo {
 	urlFromServer += parameters;
 //	currentExperiments = Settings.getPreference(EXPERIMENTS_OF_SESSION + sessionGuid, null);
 	try {
+		printUserMessage("about to openChannel");
 	    openChannel(getChannelTokenToNetLogo(urlFromServer));
 	} catch (Exception e) {
 	    e.printStackTrace(getErrorLog());
@@ -247,6 +250,7 @@ public class BC2NetLogo {
 		printUserMessage("Connection to server re-established.");
 	    } else {
 		try {
+			printUserMessage("about to DesktopApi.browse");
 		    DesktopApi.browse(new URI(urlFromServer));
 		} catch (Exception e) {
 		    printUserMessage("Failed to open the following URL. Please copy and paste this into a browser: " + urlFromServer);
@@ -295,8 +299,13 @@ public class BC2NetLogo {
 //		@Override
 //		public void run() {
 		    try {
-			channel = new ChannelAPI(behaviourComposerBaseURL, channelToken, sessionGuid, new ChannelListener());
+		    	printUserMessage("new ChannelListener");
+			ChannelListener channelService = new ChannelListener();
+			printUserMessage("new ChannelAPI");
+			channel = new ChannelAPI(behaviourComposerBaseURL, channelToken, sessionGuid, channelService);
+			printUserMessage("channel.open");
 			channel.open(internetAccess);
+			printUserMessage("channel opened");
 		    } catch (Exception e) {
 			e.printStackTrace(getErrorLog());
 		    }
@@ -361,7 +370,7 @@ public class BC2NetLogo {
     public static void displayUserMessage(String message) {
 	try {
 	    App.app().command("user-message \"" + message + "\"");
-	} catch (CompilerException e) {
+	} catch (Exception e) {
 	    e.printStackTrace(getErrorLog());
 	}
     }
