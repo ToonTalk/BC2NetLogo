@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="src/uk/ac/ox/it/modelling4all/bc2netlogo/lib/commons-codec-1.6.jar"/>
 	<classpathentry kind="lib" path="src/uk/ac/ox/it/modelling4all/bc2netlogo/lib/commons-io-2.4.jar"/>
 	<classpathentry kind="lib" path="src/uk/ac/ox/it/modelling4all/bc2netlogo/lib/commons-lang-2.6.jar"/>
@@ -47,5 +46,9 @@
 	<classpathentry kind="lib" path="src/uk/ac/ox/it/modelling4all/bc2netlogo/lib/scala-parser-combinators_2.12-1.0.4.jar"/>
 	<classpathentry kind="lib" path="src/uk/ac/ox/it/modelling4all/bc2netlogo/lib/shapeless_2.12-2.3.2.jar"/>
 	<classpathentry kind="lib" path="src/uk/ac/ox/it/modelling4all/bc2netlogo/lib/jcommon-1.0.16.jar"/>
+	<classpathentry kind="lib" path="src/uk/ac/ox/it/modelling4all/bc2netlogo/lib/args4j-2.0.12.jar"/>
+	<classpathentry kind="lib" path="src/uk/ac/ox/it/modelling4all/bc2netlogo/lib/jansi-1.4.jar"/>
+	<classpathentry kind="lib" path="src/uk/ac/ox/it/modelling4all/bc2netlogo/lib/jline-2.9.2.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
