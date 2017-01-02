@@ -50,20 +50,20 @@ public class ChannelAPI {
     private Integer TIMEOUT_MS = 500;
     private HttpClient httpClient = new DefaultHttpClient();
     private Thread thPoll = null;
-    
+
     /**
      * Default Constructor
      */
     public ChannelAPI(){
-    	this.clientId = null;
-    	this.channelId = null;
-    	this.requestId = null;
-    	this.sessionId = null;
-    	this.requestId = 0;
-    	this.messageId = 1;
-    	this.applicationKey = null;
+        this.clientId = null;
+        this.channelId = null;
+        this.requestId = null;
+        this.sessionId = null;
+        this.requestId = 0;
+        this.messageId = 1;
+        this.applicationKey = null;
     }
-    
+
     /**
      * Create A Channel, Using URL, ChannelKey and a ChannelService
      * @param URL - Server Location - http://localhost:8888
@@ -75,32 +75,32 @@ public class ChannelAPI {
      * @throws ClientProtocolException Connection Related
      */
     public ChannelAPI(String URL, String channelKey, ChannelService channelService) throws IOException, ClientProtocolException {
-    	this.clientId = null;
-    	this.BASE_URL = URL;
-    	this.requestId = 0;
-    	this.messageId = 1;
-    	this.channelId = createChannel(channelKey);
-    	this.applicationKey = channelKey;
-    	
-    	if (channelListener != null) {
+        this.clientId = null;
+        this.BASE_URL = URL;
+        this.requestId = 0;
+        this.messageId = 1;
+        this.channelId = createChannel(channelKey);
+        this.applicationKey = channelKey;
+
+        if (channelListener != null) {
             this.channelListener = channelService;
         }
     }
-    
+
     public ChannelAPI(String URL, String channelId, String applicationKey, ChannelService channelService) throws IOException, ClientProtocolException {
-    	BC2NetLogo.printUserMessage("ChannelAPI");
-    	this.clientId = null;
-    	this.BASE_URL = URL;
-    	this.requestId = 0;
-    	this.messageId = 1;
-    	this.channelId = channelId;
-    	this.applicationKey = applicationKey;
-    	
-    	if (channelListener != null) {
+        BC2NetLogo.printUserMessage("ChannelAPI");
+        this.clientId = null;
+        this.BASE_URL = URL;
+        this.requestId = 0;
+        this.messageId = 1;
+        this.channelId = channelId;
+        this.applicationKey = applicationKey;
+
+        if (channelListener != null) {
             this.channelListener = channelService;
         }
     }
-    
+
     /**
      * Ability to join an existing Channel with a full channel token, URL, and ChannelService
      * @param URL - Server Location - http://localhost:8888
@@ -109,17 +109,17 @@ public class ChannelAPI {
      *  the server pushes data
      */
     public void joinChannel(String URL, String token, ChannelService channelService) {
-    	this.clientId = null;
-    	this.BASE_URL = URL;
+        this.clientId = null;
+        this.BASE_URL = URL;
         this.channelId = token;
-        
-        
+
+
         this.applicationKey = this.channelId.substring(this.channelId.lastIndexOf("-") + 1);
         if (channelListener != null) {
             this.channelListener = channelService;
         }
     }
-    
+
     /**
      * Create a Channel on the Server and return the channelID + Key
      * @param key
@@ -128,20 +128,20 @@ public class ChannelAPI {
      * @throws ClientProtocolException
      */
     private String createChannel(String key) throws IOException, ClientProtocolException{
-    	String token = "";
-		HttpClient staticClient = new DefaultHttpClient();
-		HttpGet httpGet = new HttpGet(BASE_URL + "/token?c=" + key);
-		try{
-			XHR xhr = new XHR(staticClient.execute(httpGet));
-			System.out.println(xhr.getResponseText());
-			JSONObject json = new JSONObject(xhr.getResponseText());
-			token = json.getString("token");
-		} catch (JSONException e) {
-			System.out.println("Error: Parsing JSON");
-		}
-    	return token;
+        String token = "";
+        HttpClient staticClient = new DefaultHttpClient();
+        HttpGet httpGet = new HttpGet(BASE_URL + "/token?c=" + key);
+        try{
+            XHR xhr = new XHR(staticClient.execute(httpGet));
+            System.out.println(xhr.getResponseText());
+            JSONObject json = new JSONObject(xhr.getResponseText());
+            token = json.getString("token");
+        } catch (JSONException e) {
+            System.out.println("Error: Parsing JSON");
+        }
+        return token;
     }
-    
+
 
     /**
      * Connect to the Channel
@@ -151,39 +151,39 @@ public class ChannelAPI {
      * @throws IOException, ChannelException
      */
     public void open(boolean internetAccess) throws IOException, ChannelException {
-    	BC2NetLogo.printUserMessage("open");
-    	this.readyState = ReadyState.CONNECTING;
-    	if(this.BASE_URL.contains("localhost") || !internetAccess){ //Local Development Mode
+        BC2NetLogo.printUserMessage("open");
+        this.readyState = ReadyState.CONNECTING;
+        if(this.BASE_URL.contains("localhost") || !internetAccess){ //Local Development Mode
             connect(sendGet(getUrl("connect"))); 
-    	} else { //Production - AppEngine Mode
-    		BC2NetLogo.printUserMessage("initialize");
-    		initialize();
-    		BC2NetLogo.printUserMessage("fetchSid");
+        } else { //Production - AppEngine Mode
+            BC2NetLogo.printUserMessage("initialize");
+            initialize();
+            BC2NetLogo.printUserMessage("fetchSid");
             fetchSid();
             BC2NetLogo.printUserMessage("connect");
             connect();
             BC2NetLogo.printUserMessage("longPoll");
             longPoll();
-    	}
+        }
     }
-    
+
     /**
      * Sets up the initial connection, passes in the token
      */
     private void initialize() throws ChannelException {
-    	BC2NetLogo.printUserMessage("new JSONObject");
+        BC2NetLogo.printUserMessage("new JSONObject");
         JSONObject xpc = new JSONObject();
         BC2NetLogo.printUserMessage("xpc.put");
         try {
-			xpc.put("cn", RandomStringUtils.random(10, true, false));
-			xpc.put("tp", "null");
+            xpc.put("cn", RandomStringUtils.random(10, true, false));
+            xpc.put("tp", "null");
             xpc.put("lpu", this.PROD_TALK_URL + "xpc_blank");
             xpc.put("ppu", this.BASE_URL + this.CHANNEL_URL + "xpc_blank");
 
-		} catch (JSONException e1) {
+        } catch (JSONException e1) {
 
-		}
-        
+        }
+
         List<NameValuePair> params = new ArrayList<NameValuePair>();
         params.add(new BasicNameValuePair("token", this.channelId));
         params.add(new BasicNameValuePair("xpc", xpc.toString()));
@@ -192,10 +192,10 @@ public class ChannelAPI {
         BC2NetLogo.printUserMessage("new HttpGet");
         HttpGet httpGet = new HttpGet(initUri);
         try {
-        	BC2NetLogo.printUserMessage("this.httpClient.execute");
+            BC2NetLogo.printUserMessage("this.httpClient.execute");
             HttpResponse resp = this.httpClient.execute(httpGet);
             if (resp.getStatusLine().getStatusCode() > 299) {
-            	BC2NetLogo.printUserMessage("ChannelException");
+                BC2NetLogo.printUserMessage("ChannelException");
                 throw new ChannelException("Initialize failed: "+resp.getStatusLine());
             }
             BC2NetLogo.printUserMessage("IOUtils.toString");
@@ -204,7 +204,7 @@ public class ChannelAPI {
             consume(resp.getEntity());
 
             Pattern p = Pattern.compile("chat\\.WcsDataClient\\(([^\\)]+)\\)",
-                   Pattern.CASE_INSENSITIVE | Pattern.MULTILINE);
+                    Pattern.CASE_INSENSITIVE | Pattern.MULTILINE);
             Matcher m = p.matcher(html);
             if (m.find()) {
                 String fields = m.group(1);
@@ -230,12 +230,12 @@ public class ChannelAPI {
             throw new ChannelException(e);
         }
     }
-    
+
     /**
      * Fetches and parses the SID, which is a kind of session ID.
      */
     private void fetchSid() throws ChannelException {
-    	
+
         String uri = getBindString(new BasicNameValuePair("CVER", "1"));
 
         HttpPost httpPost = new HttpPost(uri);
@@ -247,7 +247,7 @@ public class ChannelAPI {
             // but probably not necessary
             httpPost.setEntity(new UrlEncodedFormEntity(data, "utf-8"));
         } catch (UnsupportedEncodingException e) {
-        	
+
         }
 
         TalkMessageParser parser = null;
@@ -261,7 +261,7 @@ public class ChannelAPI {
             List<TalkMessage.TalkMessageEntry> entries = entry.getMessageValue().getEntries();
             if (!entries.get(0).getStringValue().equals("c")) {
                 throw new InvalidMessageException("Expected first value to be 'c', found: "+
-                            entries.get(0).getStringValue());
+                        entries.get(0).getStringValue());
             }
 
             this.SID = entries.get(1).getStringValue();
@@ -277,13 +277,13 @@ public class ChannelAPI {
             }
         }
     }
-    
+
     /**
      * We need to make this "connect" request to set up the binding.
      */
     private void connect() throws ChannelException {
         String uri = getBindString(new BasicNameValuePair("AID", Long.toString(this.messageId)),
-                             new BasicNameValuePair("CVER", "1"));
+                new BasicNameValuePair("CVER", "1"));
 
         List<NameValuePair> params = new ArrayList<NameValuePair>();
         params.add(new BasicNameValuePair("count", "1"));
@@ -312,7 +312,7 @@ public class ChannelAPI {
 
         this.channelListener.onOpen();
     }
-    
+
     /**
      * Gets the URL to the "/bind" endpoint.
      */
@@ -333,10 +333,10 @@ public class ChannelAPI {
 
         params.add(new BasicNameValuePair("RID", Integer.toString(this.requestId)));
         this.requestId ++;
-        
+
         return this.PROD_TALK_URL + "dch/bind?VER=8&" + URLEncodedUtils.format(params, "UTF-8");
     }
-    
+
     /**
      * Grabbing Data "Production" Path
      */
@@ -388,17 +388,17 @@ public class ChannelAPI {
                             handleMessage(msg);
                         }
                     } catch (ChannelException e) {
-                	try {
-			    close();
-			} catch (IOException e1) {
-			    e1.printStackTrace();
-			}
-                	parser.close();
+                        try {
+                            close();
+                        } catch (IOException e1) {
+                            e1.printStackTrace();
+                        }
+                        parser.close();
                         parser = null;
                         channelListener.onError(500, e.getMessage());
                     }
-               }
-           }
+                }
+            }
         });
 
         readyState = ReadyState.OPEN;
@@ -509,27 +509,28 @@ public class ChannelAPI {
             } catch (IOException e) {
                 throw new ChannelException(e);
             } catch(NumberFormatException e) {
-//        	try {
-//        	    System.out.println(line);
-//		    while ((line = mReader.readLine()) != null) {
-//		        System.out.println(line);
-//		    }
-//		} catch (IOException e1) {
-//		    // TODO Auto-generated catch block
-//		    e1.printStackTrace();
-//		}
-        	e.printStackTrace();
-        	// following consumes the entire bad 'response' so only one exception is thrown
-        	String response = "";
-        	while (line != null) {
-        	    response += line;
-        	    try {
-			line = mReader.readLine();
-		    } catch (IOException e1) {
-			e1.printStackTrace();
-		    }
-        	}
-        	close(); // close this channel
+                //        	try {
+                //        	    System.out.println(line);
+                //		    while ((line = mReader.readLine()) != null) {
+                //		        System.out.println(line);
+                //		    }
+                //		} catch (IOException e1) {
+                //		    // TODO Auto-generated catch block
+                //		    e1.printStackTrace();
+                //		}
+                e.printStackTrace();
+                // following consumes the entire bad 'response' so only one exception is thrown
+                String response = "";
+                while (line != null) {
+                    response += line;
+                    try {
+                        line = mReader.readLine();
+                        System.out.println(line);
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                    }
+                }
+                close(); // close this channel
                 throw new ChannelException("Submission was not in expected format. Response is " + response, e);
             }
         }
@@ -743,7 +744,7 @@ public class ChannelAPI {
         this.readyState = ReadyState.CLOSING;
         disconnect(sendGet(getUrl("disconnect")));
     }
-    
+
     /**
      * A helper method that consumes an HttpEntity so that the HttpClient can be reused. If you're
      * not planning to run on Android, you can use the non-deprecated EntityUtils.consume() method
@@ -757,7 +758,7 @@ public class ChannelAPI {
                 entity.consumeContent();
             }
         } catch (IOException e) {
-        	//Don't Worry About
+            //Don't Worry About
         }
     }
 
@@ -819,7 +820,7 @@ public class ChannelAPI {
             poll();
         } else {
             this.channelListener.onError(xhr.getStatus(), xhr.getStatusText());
-//            poll(); // added by Ken Kahn to continue after an error
+            //            poll(); // added by Ken Kahn to continue after an error
         }
     }
 
@@ -840,7 +841,7 @@ public class ChannelAPI {
                         forwardMessage(xhr);
                     } catch (Exception e) {
                         thPoll = null;
-//                        run(); // added by Ken Kahn in case problem is temporary or intermittent 
+                        //                        run(); // added by Ken Kahn in case problem is temporary or intermittent 
                     }
                 }
 
@@ -867,7 +868,7 @@ public class ChannelAPI {
      * @throws IOException
      */
     public boolean send(String message, String urlPattern) throws IOException {
-    	if (this.readyState != ReadyState.OPEN) {
+        if (this.readyState != ReadyState.OPEN) {
             return false;
         }
         String url = BASE_URL + urlPattern;
@@ -886,8 +887,8 @@ public class ChannelAPI {
      * @throws IOException
      */
     private XHR sendPost(String url, List<NameValuePair> params) throws IOException {
-    	HttpClient sendClient = new DefaultHttpClient();
-    	UrlEncodedFormEntity entity = new UrlEncodedFormEntity(params, "UTF-8");
+        HttpClient sendClient = new DefaultHttpClient();
+        UrlEncodedFormEntity entity = new UrlEncodedFormEntity(params, "UTF-8");
         HttpPost httpPost = new HttpPost(url);
         httpPost.setEntity(entity);
         return new XHR(sendClient.execute(httpPost));
@@ -903,17 +904,17 @@ public class ChannelAPI {
         HttpGet httpGet = new HttpGet(url);
         return new XHR(httpClient.execute(httpGet));
     }
-    
+
     /**
-	 * Set a new ChannelListener
-	 * @param channelListener
-	 */
-	public void setChannelListener(ChannelService channelListener) {
-	    if (channelListener != null) {
-		    this.channelListener = channelListener;
-		}
-	}
-    
+     * Set a new ChannelListener
+     * @param channelListener
+     */
+    public void setChannelListener(ChannelService channelListener) {
+        if (channelListener != null) {
+            this.channelListener = channelListener;
+        }
+    }
+
     /**
      * This exception is thrown in case of errors.
      */
