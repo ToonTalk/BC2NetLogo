@@ -606,17 +606,25 @@ public class BC2NetLogo {
             public void run() {
 
                 try {
-                    String fileName = "Model from Behaviour Composer.nlogo";
+                    String directory = Settings.getPreference("BC2NetLogoDirectory", "");
+                    String fileName = directory + "\\Model from Behaviour Composer.nlogo";
                     String extension = "nlogo";
                     if (finalModelString.contains(";; This is a 3D model that needs to be run by the 3D version of NetLogo")) {
                         fileName += "3d";
                         extension += "3d";
                     }
-                    App.app().openFromSource(fileName, finalModelString);
+                    // openFromSource no longer works as it did in NetLogo 5.3 so
+                    // workaround is to save to a file
+                    PrintStream printStream = new PrintStream(fileName);
+                    printStream.print(finalModelString.replace('\r', '\n'));
+                    printStream.close();
+                    App.app().open(fileName);
+//                    App.app().openFromSource(fileName, finalModelString.replace('\r', '\n'));
 //                    ConfigurableModelLoader loader = package$.MODULE$.basicLoader();
-//                    loader.readModel(finalModelString, extension);
-                    App.app().getProcedures().trim(); // what does this accomplish?
+//                    Model model = loader.readModel(finalModelString.replace('\r', '\n'), extension).get();
+//                    App.app().getProcedures().trim(); // what does this accomplish?
                     String modelAsString = getCurrentSource(extension);
+//                    String modelAsString = loader.sourceString(model, extension).get();
                     proceduresExperimentsAndRestOfModel(modelAsString, codeExperimentsAndRestOfModel);
                     currentCode = codeExperimentsAndRestOfModel[0];
                     currentRestOfModel = codeExperimentsAndRestOfModel[2];
