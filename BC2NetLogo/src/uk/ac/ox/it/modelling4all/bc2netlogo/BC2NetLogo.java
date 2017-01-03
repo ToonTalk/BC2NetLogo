@@ -477,7 +477,7 @@ public class BC2NetLogo {
             public void run() {
                 try {
                     String extension;
-                    if (finalModelString.contains(";; This is a 3D model that needs to be run by the 3D version of NetLogo")) {
+                    if (finalModelString.contains(";; This is a 3D model")) {
                         extension = "nlogo3d";
                     } else {
                         extension = "nlogo";
@@ -609,7 +609,7 @@ public class BC2NetLogo {
                     String directory = Settings.getPreference("BC2NetLogoDirectory", "");
                     String fileName = directory + "\\Model from Behaviour Composer.nlogo";
                     String extension = "nlogo";
-                    if (finalModelString.contains(";; This is a 3D model that needs to be run by the 3D version of NetLogo")) {
+                    if (finalModelString.contains(";; This is a 3D model")) {
                         fileName += "3d";
                         extension += "3d";
                     }
