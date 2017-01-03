@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch4jConfig>
+  <dontWrapJar>false</dontWrapJar>
+  <headerType>gui</headerType>
+  <jar>C:\bin\BC2NetLogo\support.jar</jar>
+  <outfile>C:\bin\BC2NetLogo\BC2NetLogo3D.exe</outfile>
+  <errTitle></errTitle>
+  <cmdLine></cmdLine>
+  <chdir>.</chdir>
+  <priority>normal</priority>
+  <downloadUrl>http://java.com/download</downloadUrl>
+  <supportUrl></supportUrl>
+  <stayAlive>false</stayAlive>
+  <restartOnCrash>false</restartOnCrash>
+  <manifest></manifest>
+  <icon></icon>
+  <classPath>
+    <mainClass>uk.ac.ox.it.modelling4all.bc2netlogo.BC2NetLogo</mainClass>
+    <cp>uk.ac.ox.it.modelling4all.bc2netlogo</cp>
+  </classPath>
+  <jre>
+    <path></path>
+    <bundledJre64Bit>false</bundledJre64Bit>
+    <bundledJreAsFallback>false</bundledJreAsFallback>
+    <minVersion>1.8.0</minVersion>
+    <maxVersion></maxVersion>
+    <jdkPreference>preferJre</jdkPreference>
+    <runtimeBits>64/32</runtimeBits>
+    <initialHeapSize>1024</initialHeapSize>
+    <initialHeapPercent>50</initialHeapPercent>
+    <maxHeapSize>4096</maxHeapSize>
+    <maxHeapPercent>80</maxHeapPercent>
+    <opt>-Dorg.nlogo.is3d=true </opt>
+  </jre>
+</launch4jConfig>
