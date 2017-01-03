@@ -600,10 +600,10 @@ public class BC2NetLogo {
         //	}
         Runnable openModelRunnable = new Runnable() {
             public void run() {
-
+                String fileName = null;
                 try {
                     String directory = Settings.getPreference("BC2NetLogoDirectory", "");
-                    String fileName = directory + "\\Model from Behaviour Composer.nlogo";
+                    fileName = directory + "\\Model from Behaviour Composer.nlogo";
                     String extension = "nlogo";
                     if (finalModelString.contains(";; This is a 3D model")) {
                         fileName += "3d";
@@ -625,8 +625,9 @@ public class BC2NetLogo {
                     currentCode = codeExperimentsAndRestOfModel[0];
                     currentRestOfModel = codeExperimentsAndRestOfModel[2];
                 }
-                catch(Exception ex) {
-                    ex.printStackTrace(getErrorLog());
+                catch(Exception e) {
+                    System.err.println("Error in " + fileName + ": " + e.getMessage());
+                    e.printStackTrace(getErrorLog());
                 }
             }
         };
