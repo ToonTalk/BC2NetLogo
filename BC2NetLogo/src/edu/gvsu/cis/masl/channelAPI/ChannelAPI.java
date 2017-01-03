@@ -88,7 +88,7 @@ public class ChannelAPI {
     }
 
     public ChannelAPI(String URL, String channelId, String applicationKey, ChannelService channelService) throws IOException, ClientProtocolException {
-        BC2NetLogo.printUserMessage("ChannelAPI");
+//        BC2NetLogo.printUserMessage("ChannelAPI");
         this.clientId = null;
         this.BASE_URL = URL;
         this.requestId = 0;
@@ -151,18 +151,18 @@ public class ChannelAPI {
      * @throws IOException, ChannelException
      */
     public void open(boolean internetAccess) throws IOException, ChannelException {
-        BC2NetLogo.printUserMessage("open");
+//        BC2NetLogo.printUserMessage("open");
         this.readyState = ReadyState.CONNECTING;
         if(this.BASE_URL.contains("localhost") || !internetAccess){ //Local Development Mode
             connect(sendGet(getUrl("connect"))); 
         } else { //Production - AppEngine Mode
-            BC2NetLogo.printUserMessage("initialize");
+//            BC2NetLogo.printUserMessage("initialize");
             initialize();
-            BC2NetLogo.printUserMessage("fetchSid");
+//            BC2NetLogo.printUserMessage("fetchSid");
             fetchSid();
-            BC2NetLogo.printUserMessage("connect");
+//            BC2NetLogo.printUserMessage("connect");
             connect();
-            BC2NetLogo.printUserMessage("longPoll");
+//            BC2NetLogo.printUserMessage("longPoll");
             longPoll();
         }
     }
@@ -171,9 +171,9 @@ public class ChannelAPI {
      * Sets up the initial connection, passes in the token
      */
     private void initialize() throws ChannelException {
-        BC2NetLogo.printUserMessage("new JSONObject");
+//        BC2NetLogo.printUserMessage("new JSONObject");
         JSONObject xpc = new JSONObject();
-        BC2NetLogo.printUserMessage("xpc.put");
+//        BC2NetLogo.printUserMessage("xpc.put");
         try {
             xpc.put("cn", RandomStringUtils.random(10, true, false));
             xpc.put("tp", "null");
@@ -189,18 +189,18 @@ public class ChannelAPI {
         params.add(new BasicNameValuePair("xpc", xpc.toString()));
 
         String initUri = this.PROD_TALK_URL + "d?" + URLEncodedUtils.format(params, "UTF-8");
-        BC2NetLogo.printUserMessage("new HttpGet");
+//        BC2NetLogo.printUserMessage("new HttpGet");
         HttpGet httpGet = new HttpGet(initUri);
         try {
-            BC2NetLogo.printUserMessage("this.httpClient.execute");
+//            BC2NetLogo.printUserMessage("this.httpClient.execute");
             HttpResponse resp = this.httpClient.execute(httpGet);
             if (resp.getStatusLine().getStatusCode() > 299) {
-                BC2NetLogo.printUserMessage("ChannelException");
+//                BC2NetLogo.printUserMessage("ChannelException");
                 throw new ChannelException("Initialize failed: "+resp.getStatusLine());
             }
-            BC2NetLogo.printUserMessage("IOUtils.toString");
+//            BC2NetLogo.printUserMessage("IOUtils.toString");
             String html = IOUtils.toString(resp.getEntity().getContent(), "UTF-8");
-            BC2NetLogo.printUserMessage("consume");
+//            BC2NetLogo.printUserMessage("consume");
             consume(resp.getEntity());
 
             Pattern p = Pattern.compile("chat\\.WcsDataClient\\(([^\\)]+)\\)",
