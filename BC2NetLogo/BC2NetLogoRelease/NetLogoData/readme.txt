@@ -1,1 +1,0 @@
-This folder is for custom images, sounds, and data files needed by NetLogo models.
