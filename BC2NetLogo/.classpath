@@ -50,5 +50,6 @@
 	<classpathentry kind="lib" path="src/uk/ac/ox/it/modelling4all/bc2netlogo/lib/jansi-1.4.jar"/>
 	<classpathentry kind="lib" path="src/uk/ac/ox/it/modelling4all/bc2netlogo/lib/jline-2.9.2.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="src/uk/ac/ox/it/modelling4all/bc2netlogo/lib/jogl-all-2.3.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
