@@ -39,7 +39,8 @@ public class BC2NetLogo {
 
     // https prevents an ISP from injecting JavaScript
     // but https://modelling4all.org doesn't work
-    private static String domain = "https://m4a-gae.appspot.com";
+    // using 798 for NetLogo 6.0 while NetLogo Web uses 791 which is still 5.3.1
+    private static String domain = "https://798-dot-m4a-gae-hrd.appspot.com"; // "https://m4a-gae.appspot.com";
     //  when debugging:  "http://localhost:8888"
     private static String behaviourComposerBaseURL;
 
@@ -102,7 +103,8 @@ public class BC2NetLogo {
             }
             if (domain.equals("https://modelling4all.org") || domain.equals("http://modelling4all.org")) {
                 // otherwise posts to server fail
-                domain = "https://m4a-gae.appspot.com";
+                // using 798 for NetLogo 6.0 while NetLogo Web uses 791 which is still 5.3.1
+                domain = "https://798-dot-m4a-gae-hrd.appspot.com"; // "https://m4a-gae.appspot.com";
             }
             Settings.putPreference("server", domain);
         }
