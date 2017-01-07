@@ -29,8 +29,6 @@ import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import uk.ac.ox.it.modelling4all.bc2netlogo.BC2NetLogo;
-
 public class ChannelAPI {
 
     private enum ReadyState {CONNECTING, OPEN, CLOSING, CLOSED};
