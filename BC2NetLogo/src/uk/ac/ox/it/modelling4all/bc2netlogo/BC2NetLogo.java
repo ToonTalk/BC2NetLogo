@@ -5,6 +5,7 @@ package uk.ac.ox.it.modelling4all.bc2netlogo;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -602,21 +603,20 @@ public class BC2NetLogo {
         //	}
         Runnable openModelRunnable = new Runnable() {
             public void run() {
-                String fileName = null;
+                File tempFile = null;
                 try {
-                    String directory = Settings.getPreference("BC2NetLogoDirectory", "");
-                    fileName = directory + "\\Model from Behaviour Composer.nlogo";
                     String extension = "nlogo";
                     if (finalModelString.contains(";; This is a 3D model")) {
-                        fileName += "3d";
                         extension += "3d";
                     }
                     // openFromSource no longer works as it did in NetLogo 5.3 so
                     // workaround is to save to a file
-                    PrintStream printStream = new PrintStream(fileName);
+                    tempFile = File.createTempFile("model", "." + extension);
+                    tempFile.deleteOnExit();
+                    PrintStream printStream = new PrintStream(tempFile);
                     printStream.print(finalModelString.replace('\r', '\n'));
                     printStream.close();
-                    App.app().open(fileName);
+                    App.app().open(tempFile.getPath());
 //                    App.app().openFromSource(fileName, finalModelString.replace('\r', '\n'));
 //                    ConfigurableModelLoader loader = package$.MODULE$.basicLoader();
 //                    Model model = loader.readModel(finalModelString.replace('\r', '\n'), extension).get();
@@ -628,7 +628,7 @@ public class BC2NetLogo {
                     currentRestOfModel = codeExperimentsAndRestOfModel[2];
                 }
                 catch(Exception e) {
-                    System.err.println("Error in " + fileName + ": " + e.getMessage());
+                    System.err.println("Error in " + tempFile.getPath() + ": " + e.getMessage());
                     e.printStackTrace(getErrorLog());
                 }
             }
