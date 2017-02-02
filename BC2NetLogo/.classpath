@@ -49,6 +49,6 @@
 	<classpathentry kind="lib" path="src/uk/ac/ox/it/modelling4all/bc2netlogo/lib/args4j-2.0.12.jar"/>
 	<classpathentry kind="lib" path="src/uk/ac/ox/it/modelling4all/bc2netlogo/lib/jansi-1.4.jar"/>
 	<classpathentry kind="lib" path="src/uk/ac/ox/it/modelling4all/bc2netlogo/lib/jline-2.9.2.jar"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
