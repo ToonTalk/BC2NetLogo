@@ -40,11 +40,9 @@ public class BC2NetLogo {
 
     // https prevents an ISP from injecting JavaScript
     // but https://modelling4all.org doesn't work
-    // using 800 for NetLogo 6.0 while NetLogo Web uses 791 which is still 5.3.1
-    private static String domain = "https://800-dot-m4a-gae-hrd.appspot.com"; // "https://m4a-gae.appspot.com";
+    private static String domain = "https://m4a-gae.appspot.com";
     //  when debugging:  "http://localhost:8888"
     private static String behaviourComposerBaseURL;
-
     //    private static final String BC_AUXILIARY_FILE = "bc_auxiliary_file_from_download_tab_version_20.nls";
     //    private static final String CURRENT_VERSION = "1";
     //    private static String auxiliaryFile = null;
@@ -611,7 +609,7 @@ public class BC2NetLogo {
                     }
                     // openFromSource no longer works as it did in NetLogo 5.3 so
                     // workaround is to save to a file
-                    tempFile = File.createTempFile("model", "." + extension);
+                    tempFile = File.createTempFile("model", "." + extension, new File(Settings.getPreference("BC2NetLogoDirectory", "")));
                     tempFile.deleteOnExit();
                     PrintStream printStream = new PrintStream(tempFile);
                     printStream.print(finalModelString.replace('\r', '\n'));
